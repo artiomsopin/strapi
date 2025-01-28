@@ -21,6 +21,9 @@
         "components.first-component",
         "components.second-component"
       ]
+    },
+    "slug": {
+      "type": "string"
     }
   }
 }
