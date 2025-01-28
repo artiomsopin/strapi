@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_components_first_components",
+  "info": {
+    "displayName": "first-component",
+    "icon": "apps",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    }
+  }
+}
