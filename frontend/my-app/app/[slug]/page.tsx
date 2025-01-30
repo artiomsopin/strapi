@@ -1,20 +1,27 @@
-import fetchData from '../utils/fetchData';
+import fetchData from "../utils/fetchData";
 
 interface Zone {
   id: number;
-  title: string;
-  text?: string; 
-  __component: "components.first-component" | "components.second-component";
+  header: string;
+  description?: string;
+  __component:
+    | "components.header"
+    | "components.description"
+    | "components.image";
 }
 
 interface PageItem {
   id: number;
   title: string;
   slug: string;
-  zone?: Zone[]; 
+  zone?: Zone[];
 }
 
-export default async function PageDetails({ params }: { params: { slug: string } }) {
+export default async function PageDetails({
+  params,
+}: {
+  params: { slug: string };
+}) {
   if (!params.slug) {
     return <p className="text-center text-red-500">No member found</p>;
   }
@@ -22,40 +29,30 @@ export default async function PageDetails({ params }: { params: { slug: string }
   const data = await fetchData(params.slug);
   console.log("Fetched Data:", data.data);
 
-  if (!data) return <p className="text-center text-gray-500">Loading...</p>;
+  if (!data) return <p>Loading...</p>;
 
   return (
-    <div className="max-w-3xl mx-auto p-6">
-      <h1 className="text-2xl font-bold text-center mb-6">Page Details</h1>
-
+    <div>
       {data.data.map((item: PageItem) => (
-        <div key={item.id} className="border border-gray-300 rounded-lg p-4 mb-4 shadow-sm bg-white">
-          <p className="text-lg font-semibold text-gray-800">ID: {item.id}</p>
-          <p className="text-lg font-semibold text-blue-600">Title: {item.title}</p>
-          <p className="text-gray-600">Slug: {item.slug}</p>
-
-          {/* Handle zones */}
+        <div key={item.id}>
           {item.zone && (
-            <div className="mt-2">
-              <p className="text-sm font-medium text-gray-700">Zones:</p>
-              <ul className="list-disc list-inside text-gray-600">
-                {item.zone.map((zone) => (
-                  <li key={zone.id} className="ml-4">
-                    {zone.__component === "components.second-component" && (
-                      <>
-                        <strong>Second Component - Title:</strong> {zone.title}
-                      </>
-                    )}
-                    {zone.__component === "components.first-component" && (
-                      <>
-                        <strong>First Component - Title:</strong> {zone.title} <br />
-                        <strong>Text:</strong> {zone.text}
-                      </>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <>
+              {item.zone.map((zone) => (
+                <div key={zone.id}>
+                  {zone.__component === "components.header" && (
+                    <div className="bg-blue-500 py-6">
+                      <h1 className="text-4xl font-bold text-center">{zone.header}</h1>
+                    </div>
+                  )}
+
+                  {zone.__component === "components.description" && (
+                    <div className="container mx-auto px-4 py-6">
+                      <p className="text-lg break-words">{zone.description}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </>
           )}
         </div>
       ))}

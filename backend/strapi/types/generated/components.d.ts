@@ -1,28 +1,35 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
-export interface ComponentsFirstComponent extends Struct.ComponentSchema {
-  collectionName: 'components_components_first_components';
+export interface ComponentsDescription extends Struct.ComponentSchema {
+  collectionName: 'components_components_descriptions';
   info: {
-    description: '';
-    displayName: 'first-component';
-    icon: 'apps';
+    displayName: 'Description';
+    icon: 'hashtag';
   };
   attributes: {
-    text: Schema.Attribute.Text;
-    title: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
   };
 }
 
-export interface ComponentsSecondComponent extends Struct.ComponentSchema {
-  collectionName: 'components_components_second_components';
+export interface ComponentsHeader extends Struct.ComponentSchema {
+  collectionName: 'components_components_headers';
   info: {
-    description: '';
-    displayName: 'second-component';
+    displayName: 'Header';
     icon: 'alien';
   };
   attributes: {
-    picture: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    title: Schema.Attribute.String;
+    header: Schema.Attribute.String;
+  };
+}
+
+export interface ComponentsImage extends Struct.ComponentSchema {
+  collectionName: 'components_components_images';
+  info: {
+    displayName: 'Image';
+    icon: 'picture';
+  };
+  attributes: {
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
 }
 
@@ -91,8 +98,9 @@ export interface SharedSlider extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
-      'components.first-component': ComponentsFirstComponent;
-      'components.second-component': ComponentsSecondComponent;
+      'components.description': ComponentsDescription;
+      'components.header': ComponentsHeader;
+      'components.image': ComponentsImage;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;
