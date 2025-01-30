@@ -559,7 +559,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     zone: Schema.Attribute.DynamicZone<
-      ['components.first-component', 'components.second-component']
+      ['components.header', 'components.description', 'components.image']
     >;
   };
 }

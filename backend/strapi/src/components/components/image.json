@@ -1,16 +1,12 @@
 {
-  "collectionName": "components_components_second_components",
+  "collectionName": "components_components_images",
   "info": {
-    "displayName": "second-component",
-    "icon": "alien",
-    "description": ""
+    "displayName": "Image",
+    "icon": "picture"
   },
   "options": {},
   "attributes": {
-    "title": {
-      "type": "string"
-    },
-    "picture": {
+    "image": {
       "allowedTypes": [
         "images",
         "files",

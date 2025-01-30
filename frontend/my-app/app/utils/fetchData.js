@@ -1,17 +1,14 @@
 import axios from 'axios';
 
-const fetchData = async (slug) => {
+const fetchData = async (slug = '') => {
   try {
-    if (!slug) {
-      console.error('Error: slug is undefined or empty');
-      return null;
-    }
-    console.log('Fetching data for slug:', slug);
+    const url = slug
+      ? `http://localhost:1337/api/pages?filters[slug][$eq]=${slug}&populate=*`
+      : `http://localhost:1337/api/pages?populate=*`; 
 
-    const response = await axios.get(
-      `http://localhost:1337/api/pages?filters[slug][$eq]=${slug}&populate=*`
-    );
+    console.log('Fetching data from:', url);
 
+    const response = await axios.get(url);
     return response.data;
   } catch (error) {
     console.error('Error fetching data:', error);

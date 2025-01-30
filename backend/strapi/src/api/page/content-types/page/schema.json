@@ -18,8 +18,9 @@
     "zone": {
       "type": "dynamiczone",
       "components": [
-        "components.first-component",
-        "components.second-component"
+        "components.header",
+        "components.description",
+        "components.image"
       ]
     },
     "slug": {
