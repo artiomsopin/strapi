@@ -33,6 +33,36 @@ export interface ComponentsImage extends Struct.ComponentSchema {
   };
 }
 
+export interface FormEmail extends Struct.ComponentSchema {
+  collectionName: 'components_form_emails';
+  info: {
+    displayName: 'Email';
+  };
+  attributes: {
+    email: Schema.Attribute.Email;
+  };
+}
+
+export interface FormName extends Struct.ComponentSchema {
+  collectionName: 'components_form_names';
+  info: {
+    displayName: 'Name';
+  };
+  attributes: {
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface FormPhone extends Struct.ComponentSchema {
+  collectionName: 'components_form_phones';
+  info: {
+    displayName: 'phone';
+  };
+  attributes: {
+    phone: Schema.Attribute.Integer;
+  };
+}
+
 export interface SharedMedia extends Struct.ComponentSchema {
   collectionName: 'components_shared_media';
   info: {
@@ -101,6 +131,9 @@ declare module '@strapi/strapi' {
       'components.description': ComponentsDescription;
       'components.header': ComponentsHeader;
       'components.image': ComponentsImage;
+      'form.email': FormEmail;
+      'form.name': FormName;
+      'form.phone': FormPhone;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;

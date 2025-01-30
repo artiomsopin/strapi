@@ -13,18 +13,34 @@
   "pluginOptions": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "minLength": 5
     },
     "zone": {
       "type": "dynamiczone",
       "components": [
         "components.header",
         "components.description",
-        "components.image"
-      ]
+        "components.image",
+        "form.phone",
+        "form.name",
+        "form.email"
+      ],
+      "required": true
     },
     "slug": {
-      "type": "string"
+      "type": "string",
+      "unique": true,
+      "required": true,
+      "minLength": 3
+    },
+    "registrations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::registration.registration",
+      "private": true,
+      "mappedBy": "page"
     }
   }
 }
