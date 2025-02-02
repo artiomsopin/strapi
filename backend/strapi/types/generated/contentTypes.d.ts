@@ -549,6 +549,10 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    inputZone: Schema.Attribute.DynamicZone<
+      ['form.phone', 'form.name', 'form.email']
+    > &
+      Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::page.page'> &
       Schema.Attribute.Private;
@@ -572,17 +576,6 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    zone: Schema.Attribute.DynamicZone<
-      [
-        'components.header',
-        'components.description',
-        'components.image',
-        'form.phone',
-        'form.name',
-        'form.email',
-      ]
-    > &
-      Schema.Attribute.Required;
   };
 }
 
@@ -602,6 +595,10 @@ export interface ApiRegistrationRegistration
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    inputZone: Schema.Attribute.DynamicZone<
+      ['form.phone', 'form.name', 'form.email']
+    > &
+      Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -613,10 +610,6 @@ export interface ApiRegistrationRegistration
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    zone: Schema.Attribute.DynamicZone<
-      ['form.phone', 'form.name', 'form.email']
-    > &
-      Schema.Attribute.Required;
   };
 }
 

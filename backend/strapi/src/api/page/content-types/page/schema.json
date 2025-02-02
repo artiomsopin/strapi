@@ -17,12 +17,9 @@
       "required": true,
       "minLength": 5
     },
-    "zone": {
+    "inputZone": {
       "type": "dynamiczone",
       "components": [
-        "components.header",
-        "components.description",
-        "components.image",
         "form.phone",
         "form.name",
         "form.email"
